@@ -1,25 +1,23 @@
-import logo from './logo.svg';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Users from './pages/Users';
+import UserDetails from './pages/UserDetails';
 import './App.css';
 
-function App() {
+// tiny router setup: when we visit "/", show Users; for "/users/:id", show details
+export default function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header className="header">
+        <h3 className="title">LinkPlus — User Manager</h3>
       </header>
+
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<Users />} />
+          <Route path="/users/:id" element={<UserDetails />} />
+        </Routes>
+      </div>
     </div>
   );
 }
-
-export default App;
